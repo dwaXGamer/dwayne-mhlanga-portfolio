@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Dwayne Mhlanga - Tech Creator, Cybersecurity Enthusiast & Website Designer Portfolio">
+    <title>Dwayne Mhlanga | Tech Creator & Designer Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/portfolio_logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/portfolio_logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/portfolio_logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/portfolio_logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/portfolio_logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/portfolio_logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Devicons for technology icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="logo-loader">
+                <img src="images/portfolio_logo.png" alt="DWAX Logo" class="logo-loader-img">
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="images/portfolio_logo.png" alt="DWAX Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon" id="themeIcon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Floating Animated Elements -->
+        <div class="floating-elements">
+            <!-- PS5 Joysticks -->
+            <div class="floating-element ps5-controller" id="floating-joystick-1" data-speed="1">
+                <i class="fab fa-playstation"></i>
+            </div>
+            <div class="floating-element ps5-controller" id="floating-joystick-2" data-speed="1">
+                <i class="fab fa-playstation"></i>
+            </div>
+            <!-- Ubuntu Icons -->
+            <div class="floating-element ubuntu-icon" id="floating-ubuntu-1" data-speed="1">
+                <i class="fab fa-ubuntu"></i>
+            </div>
+            <div class="floating-element ubuntu-icon" id="floating-ubuntu-2" data-speed="1">
+                <i class="fab fa-ubuntu"></i>
+            </div>
+            <!-- Light Bulbs -->
+            <div class="floating-element" id="floating-bulb-1" data-speed="1">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="floating-element" id="floating-bulb-2" data-speed="1">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <!-- Brains -->
+            <div class="floating-element" id="floating-brain-1" data-speed="1">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="floating-element" id="floating-brain-2" data-speed="1">
+                <i class="fas fa-brain"></i>
+            </div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="greeting">Hi, I'm</span>
+                        <span class="name">Dwayne Mhlanga</span>
+                        <span class="tagline">Tech Creator, Cybersecurity Enthusiast & Website Designer</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        I build reliable digital solutions, design beautiful interfaces, and love God deeply.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Hire Me</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-container">
+                        <div class="hero-img-wrapper img-1">
+                            <img src="images/dwaXGamer1.jpg" alt="Dwayne Mhlanga - Tech Creator and Designer" class="hero-img">
+                        </div>
+                        <div class="hero-img-wrapper img-2">
+                            <img src="images/dwXGamer2.jpg" alt="Dwayne Mhlanga - Tech Creator and Designer" class="hero-img">
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="image-decoration decoration-1"></div>
+                        <div class="image-decoration decoration-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <p>Scroll Down</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know the person behind the code</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="images/profile.jpg" alt="Dwayne Mhlanga - Profile Picture" class="profile-img">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>
+                        I'm Dwayne Mhlanga, known online as <strong>dwaX</strong> or <strong>dwaXGamer</strong> - a passionate young creator with a deep love for technology, design, cybersecurity, and God. I was raised in a strong Christian foundation, and that shaped who I am: creative, disciplined, and driven by purpose.
+                    </p>
+                    <p>
+                        I completed my National Diploma in Information Technology, while also studying and building a solid foundation in Cybersecurity. Over the years, I've grown from a curious kid who loved gadgets and gaming into a developer who builds real digital solutions.
+                    </p>
+                    <p>
+                        I design clean, functional websites, create brand identities, and build web-based systems. My work blends creativity and logical thinking - I enjoy taking an idea and turning it into something visually beautiful and technically reliable.
+                    </p>
+                    <p>
+                        Beyond tech, I'm a writer at heart. I'm working on multiple books including <em>"Seasons and Growth"</em> and <em>"A Letter to My Future Wife,"</em> where I combine faith, storytelling, and life lessons. I also run a blog, <strong>Geeked for Christ</strong>, where I share devotionals, tech content, and personal reflections.
+                    </p>
+                    <p>
+                        At my core, I'm a believer, a problem solver, a builder, and someone who wants to inspire others through the gifts God has placed in me. I design with intention, I create with excellence, and I aim to grow in every season of my life.
+                    </p>
+                    <p>
+                        <strong>Tech, faith, creativity, and purpose - that's who I am.</strong>
+                    </p>
+                    
+                    <div class="cv-download-section">
+                        <a href="Dwayne_Mhlanga_CV.pdf" download="Dwayne_Mhlanga_CV.pdf" class="btn btn-cv">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                    
+                    <h3>Professional Summary</h3>
+                    <p>
+                        An IT professional with strong technical versatility, combining skills in
+                        graphics design, front-end system design, and hands-on IT support. Experienced in creating visually appealing digital content, building userfriendly
+                        interfaces, and developing structured system layouts that enhance usability and functionality. Skilled in troubleshooting 
+                        hardware/software issues, setting up systems, and providing reliable technical support across diverse environments.
+                        <br><br>
+                        Driven by a growing passion for Cybersecurity, I am expanding my expertise in secure systems design, vulnerability assessment, and network defense. I bring 
+                        strong analytical abilities, creativity, and a commitment to continuous learning, qualities that support my goal of specializing in ethical 
+                        hacking, penetration testing, and cybersecurity operations. I aim to contribute to secure, efficient, and innovative IT environments while advancing toward becoming a well-rounded cybersecurity specialist.
+                    </p>
+                    
+                    <h3>Mission Statement</h3>
+                    <p>
+                        My mission is to combine technical excellence with creative design, creating solutions 
+                        that not only look great but are secure, reliable, and user-friendly. As a Christian creator, 
+                        I strive to bring integrity, excellence, and purpose to everything I build.
+                    </p>
+
+                    <h3>Fun Facts</h3>
+                    <ul class="fun-facts">
+                        <li><i class="fas fa-gamepad"></i> Passionate gamer & tech enthusiast</li>
+                        <li><i class="fas fa-futbol"></i> Football lover (soccer fanatic)</li>
+                        <li><i class="fas fa-laptop-code"></i> Always exploring the latest tech gadgets</li>
+                        <li><i class="fas fa-book"></i> Aspiring author & blogger (Geeked for Christ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Proficiencies Section -->
+            <div class="skills-section">
+                <h3 class="skills-title">Technical Proficiencies</h3>
+                
+                <!-- Languages & Databases -->
+                <div class="proficiency-category">
+                    <h4 class="category-title">Languages & Databases</h4>
+                    <div class="proficiency-grid">
+                        <div class="proficiency-card">
+                            <i class="devicon-html5-plain colored"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-css3-plain colored"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-javascript-plain colored"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-dotnetcore-plain colored"></i>
+                            <span>VB.Net</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-cplusplus-plain colored"></i>
+                            <span>C++</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-python-plain colored"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-php-plain colored"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-mysql-plain colored"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-postgresql-plain colored"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Libraries -->
+                <div class="proficiency-category">
+                    <h4 class="category-title">Frameworks & Libraries</h4>
+                    <div class="proficiency-grid">
+                        <div class="proficiency-card">
+                            <i class="devicon-react-original colored"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-flask-original colored"></i>
+                            <span>Flask</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-flutter-plain colored"></i>
+                            <span>Flutter</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-figma-plain colored"></i>
+                            <span>Figma</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-xd-plain colored"></i>
+                            <span>Adobe XD</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <img src="https://cdn.simpleicons.org/canva/00C4CC" alt="Canva" class="skill-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-palette skill-logo-fallback" style="display:none;"></i>
+                            <span>Canva</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-terminal"></i>
+                            <span>Kali Linux</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Metasploit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div class="proficiency-category">
+                    <h4 class="category-title">Tools & Platforms</h4>
+                    <div class="proficiency-grid">
+                        <div class="proficiency-card">
+                            <i class="devicon-git-plain colored"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-github-original colored"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-docker-plain colored"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-vscode-plain colored"></i>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-postman-plain colored"></i>
+                            <span>Postman</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-firebase-plain colored"></i>
+                            <span>Firebase</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-googlecloud-plain colored"></i>
+                            <span>Google Cloud</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/XAMPP_logo.svg/120px-XAMPP_logo.svg.png" alt="XAMPP" class="skill-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-server skill-logo-fallback" style="display:none;"></i>
+                            <span>XAMPP</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-ubuntu-plain colored"></i>
+                            <span>Ubuntu</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-bash-plain colored"></i>
+                            <span>Bash</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-powershell-plain colored"></i>
+                            <span>PowerShell</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-wordpress-plain colored"></i>
+                            <span>WordPress</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Power BI</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-file-excel"></i>
+                            <span>Excel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphics Design -->
+                <div class="proficiency-category">
+                    <h4 class="category-title">Graphics Design</h4>
+                    <div class="proficiency-grid">
+                        <div class="proficiency-card">
+                            <i class="devicon-illustrator-plain colored"></i>
+                            <span>Adobe Illustrator</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-photoshop-plain colored"></i>
+                            <span>Adobe Photoshop</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-aftereffects-plain colored"></i>
+                            <span>Adobe After Effects</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="devicon-figma-plain colored"></i>
+                            <span>UX/UI Design</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-palette"></i>
+                            <span>Logo Design</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-brush"></i>
+                            <span>Brand Identity</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-image"></i>
+                            <span>Digital Illustration</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-vector-square"></i>
+                            <span>Vector Graphics</span>
+                        </div>
+                        <div class="proficiency-card">
+                            <i class="fas fa-edit"></i>
+                            <span>Photo Editing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Services</h2>
+                <p class="section-subtitle">What I can do for you</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1: Website Design & Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Design & Development</h3>
+                    <p class="service-description">Clean, modern, and responsive websites using HTML, CSS, JavaScript, and PHP. Custom UI/UX design, responsive layouts, contact forms, and SEO-friendly structure.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">HTML5</span>
+                        <span class="tool-tag">CSS3</span>
+                        <span class="tool-tag">JavaScript</span>
+                        <span class="tool-tag">PHP</span>
+                    </div>
+                </div>
+
+                <!-- Service 2: Brand & Logo Design -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Brand & Logo Design</h3>
+                    <p class="service-description">Visual identities that represent your brand with clarity. Logo design, brand colors, typography, icon sets, and social media kits.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">Figma</span>
+                        <span class="tool-tag">Illustrator</span>
+                        <span class="tool-tag">Photoshop</span>
+                    </div>
+                </div>
+
+                <!-- Service 3: Web Systems & App Prototypes -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Web Systems & App Prototypes</h3>
+                    <p class="service-description">I design and build small to medium web systems. I focus on functional, easy-to-use systems built with clear architecture.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">PHP</span>
+                        <span class="tool-tag">MySQL</span>
+                        <span class="tool-tag">JavaScript</span>
+                        <span class="tool-tag">React</span>
+                    </div>
+                </div>
+
+                <!-- Service 4: UI/UX Design -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p class="service-description">User-friendly interfaces using Figma. Wireframes, high-fidelity mockups, mobile & desktop screens, and prototyping.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">Figma</span>
+                        <span class="tool-tag">Prototyping</span>
+                        <span class="tool-tag">User Research</span>
+                    </div>
+                </div>
+
+                <!-- Service 5: Poster, Banner & Graphic Design -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Poster, Banner & Graphic Design</h3>
+                    <p class="service-description">I design visually engaging posters for events, churches, artists, DJs, and businesses.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">Photoshop</span>
+                        <span class="tool-tag">Illustrator</span>
+                        <span class="tool-tag">Canva</span>
+                    </div>
+                </div>
+
+                <!-- Service 6: Cybersecurity -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity <span class="service-badge">Beginner Services</span></h3>
+                    <p class="service-description">Basic security assessments and awareness guidance. Vulnerability checks, password security setup, website security best practices, and awareness training.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">Security Tools</span>
+                        <span class="tool-tag">Best Practices</span>
+                    </div>
+                </div>
+
+                <!-- Service 7: Consulting & Tech Advice -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Consulting & Tech Advice</h3>
+                    <p class="service-description">Help with choosing tools, understanding tech, and setting up digital solutions. Website planning, tech advice, system recommendations, and branding guidance.</p>
+                    <div class="service-tools">
+                        <span class="tool-tag">Consulting</span>
+                        <span class="tool-tag">Planning</span>
+                        <span class="tool-tag">Guidance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Portfolio</h2>
+                <p class="section-subtitle">Projects I'm proud of</p>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Project 1: GeekPlanners -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/geekplanners1.png" alt="GeekPlanners Event Planning System">
+                        <div class="image-count-badge" onclick="openLightbox('geekplanners')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>6 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>GeekPlanners Event Planning System</h4>
+                            <p>Full-featured event management platform</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>GeekPlanners Event Planning System</h3>
+                        <p>Custom-built event planning system designed to streamline event planning and organization. Features user-friendly interface for managing events efficiently.</p>
+                        <div class="portfolio-tools">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: DriveNest -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/drivenest1.jpg" alt="DriveNest Car Rental System">
+                        <div class="image-count-badge" onclick="openLightbox('drivenest')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>6 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>DriveNest - Car Rental System</h4>
+                            <p>Complete car rental management platform</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>DriveNest - Car Rental System</h3>
+                        <p>A comprehensive car rental management system that handles bookings, vehicle management, and customer interactions seamlessly.</p>
+                        <div class="portfolio-tools">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: E-Farm Zimbabwe -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/efarm1.png" alt="E-Farm Zimbabwe">
+                        <div class="image-count-badge" onclick="openLightbox('efarm')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>6 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>E-Farm Zimbabwe</h4>
+                            <p>A farming marketplace platform</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>E-Farm Zimbabwe - A Farming Marketplace</h3>
+                        <p>An innovative digital marketplace connecting farmers with buyers. Facilitating agricultural trade and supporting local farming communities.</p>
+                        <div class="portfolio-tools">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: CipherNest -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/ciphernest1.png" alt="CipherNest SEIM Platform">
+                        <div class="image-count-badge" onclick="openLightbox('ciphernest')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>3 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>CipherNest - SEIM Cybersecurity Platform</h4>
+                            <p>Security Information and Event Management system</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>CipherNest - A SEIM Cybersecurity Platform <span class="project-status-badge">In Development</span></h3>
+                        <p>A Security Information and Event Management (SEIM) platform designed for monitoring, detecting, and responding to security threats in real-time. Currently under active development.</p>
+                        <div class="portfolio-tools">
+                            <span>Python</span>
+                            <span>JavaScript</span>
+                            <span>Cybersecurity</span>
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Geeked for Christ Blog -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/geeked1.png" alt="Geeked for Christ Blog">
+                        <div class="image-count-badge" onclick="openLightbox('geeked')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>6 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>Geeked for Christ Blog</h4>
+                            <p>Christian tech blog and devotional platform</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Geeked for Christ Blog</h3>
+                        <p>Personal blog combining faith and technology. Sharing devotionals, tech content, and personal reflections on living as a Christian in the tech world.</p>
+                        <div class="portfolio-tools">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Wattmaster Website -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/wattmaster1.png" alt="Wattmaster Website">
+                        <div class="image-count-badge" onclick="openLightbox('wattmaster')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>6 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>Wattmaster Website</h4>
+                            <p>Professional business website</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Wattmaster Website</h3>
+                        <p>Designed and developed a professional website for Wattmaster, featuring modern design, responsive layout, and optimized user experience.</p>
+                        <div class="portfolio-tools">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Church Logo Design -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/church1.png" alt="Church Logo Design">
+                        <div class="image-count-badge" onclick="openLightbox('church')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>3 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>Church Logo Design</h4>
+                            <p>Selected to design church branding</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Chosen to Design the Church Logo</h3>
+                        <p>Honored to be selected to create a meaningful logo design for a church, representing faith, community, and spiritual values through visual identity.</p>
+                        <div class="portfolio-tools">
+                            <span>Figma</span>
+                            <span>Illustrator</span>
+                            <span>Logo Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Graphics Design for Companies -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="images/Projects/company1.jpg" alt="Graphics Design Projects">
+                        <div class="image-count-badge" onclick="openLightbox('company')" style="cursor: pointer;">
+                            <i class="fas fa-images"></i>
+                            <span>21 Images</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h4>Graphics Design for Companies</h4>
+                            <p>Various branding and design projects</p>
+                            <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Graphics Design for Several Companies</h3>
+                        <p>Created visual identities, marketing materials, and branding assets for multiple companies. Delivering professional designs that communicate brand values effectively.</p>
+                        <div class="portfolio-tools">
+                            <span>Photoshop</span>
+                            <span>Illustrator</span>
+                            <span>Figma</span>
+                            <span>Canva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Testimonials</h2>
+                <p class="section-subtitle">What clients say about my work</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Working with Dwayne was a game changer for our business. His attention to detail and creative approach resulted in a website that exceeded our expectations. The professional design and seamless functionality have significantly improved our online presence."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/logo1.png" alt="Wattmaster Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-user" style="display:none;"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Wattmaster</h4>
+                            <p>Business Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Dwayne's technical expertise and design skills are impressive. He delivered our project on time and with exceptional quality. His professionalism and attention to detail made the entire process smooth and efficient. Highly recommend!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/logo2.png" alt="Setco Electrical Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-user" style="display:none;"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Setco Electrical</h4>
+                            <p>Electrical Services Company</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Dwayne created our complete brand identity from scratch - our logo, flyers, and all branding materials. His creative vision perfectly captured our catering company's essence. The designs are professional, eye-catching, and have significantly boosted our brand recognition. We couldn't be happier with the results!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="images/logo3.png" alt="The Roaming Kitchen Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <i class="fas fa-user" style="display:none;"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>The Roaming Kitchen</h4>
+                            <p>Catering Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Logos Slider -->
+            <div class="companies-section">
+                <h3 class="companies-title">Companies I've Worked With</h3>
+                <div class="companies-slider">
+                    <div class="company-logo">
+                        <a href="https://mmccapitalzim.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit MMC Stockbrokers website">
+                            <img src="images/stockbrokers-logo.png" alt="MMC Stockbrokers" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        </a>
+                        <div class="logo-placeholder" style="display:none;">MMC Stockbrokers</div>
+                    </div>
+                    <div class="company-logo">
+                        <a href="https://intellego-ic.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Intellego Investment Consultants website">
+                            <img src="images/intellego-Logo.png" alt="Intellego" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        </a>
+                        <div class="logo-placeholder" style="display:none;">Intellego</div>
+                    </div>
+                    <div class="company-logo">
+                        <img src="images/village.png" alt="Village" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-placeholder" style="display:none;">Village</div>
+                    </div>
+                    <div class="company-logo">
+                        <img src="images/logo1.png" alt="Wattmaster" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-placeholder" style="display:none;">Wattmaster</div>
+                    </div>
+                    <div class="company-logo">
+                        <img src="images/logo2.png" alt="Setco Electrical" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-placeholder" style="display:none;">Setco Electrical</div>
+                    </div>
+                    <div class="company-logo">
+                        <img src="images/finking.jpg" alt="Finking" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-placeholder" style="display:none;">Finking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                <p class="section-subtitle">Get in touch and let's discuss your project</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <a href="mailto:dwayne.mhlangaa10@gmail.com" class="contact-item contact-item-link">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>dwayne.mhlangaa10@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="tel:+263779794123" class="contact-item contact-item-link">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+263 77 979 4123</p>
+                        </div>
+                    </a>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Harare, Zimbabwe</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/263779794123" target="_blank" rel="noopener noreferrer" class="contact-item contact-item-link">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+263 77 979 4123</p>
+                        </div>
+                    </a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/dwayne-mhlanga-27b34614a/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/dwaXGamer" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/dwayne_mhlanga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/dwax_the_geek/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/dwayne.mhlanga.10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/portfolio_logo.png" alt="DWAX Logo" class="footer-logo-img">
+                    </div>
+                    <p>Tech Creator, Cybersecurity Enthusiast & Website Designer</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Me</h4>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/dwayne-mhlanga-27b34614a/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/dwaXGamer" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/dwayne_mhlanga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/dwax_the_geek/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/dwayne.mhlanga.10" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dwayne Mhlanga. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-prev" onclick="changeSlide(-1)" aria-label="Previous image">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-next" onclick="changeSlide(1)" aria-label="Next image">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="lightbox-image-container">
+                <img id="lightbox-image" src="" alt="Project Image">
+            </div>
+            <div class="lightbox-counter">
+                <span id="current-image">1</span> / <span id="total-images">6</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Lightbox functionality
+        let currentImageIndex = 0;
+        let currentImages = [];
+
+        const geekplannersImages = [
+            'images/Projects/geekplanners1.png',
+            'images/Projects/geekplanners2.png',
+            'images/Projects/geekplanners3.png',
+            'images/Projects/geekplanners4.png',
+            'images/Projects/geekplanners5.png',
+            'images/Projects/geekplanners6.png'
+        ];
+
+        const drivenestImages = [
+            'images/Projects/drivenest1.jpg',
+            'images/Projects/drivenest2.png',
+            'images/Projects/drivenest3.png',
+            'images/Projects/drivenest4.png',
+            'images/Projects/drivenest5.png',
+            'images/Projects/drivenest6.png'
+        ];
+
+        const efarmImages = [
+            'images/Projects/efarm1.png',
+            'images/Projects/efarm2.png',
+            'images/Projects/efarm3.png',
+            'images/Projects/efarm4.png',
+            'images/Projects/efarm5.png',
+            'images/Projects/efarm6.png'
+        ];
+
+        const ciphernestImages = [
+            'images/Projects/ciphernest1.png',
+            'images/Projects/ciphernest2.png',
+            'images/Projects/ciphernest3.png'
+        ];
+
+        const geekedImages = [
+            'images/Projects/geeked1.png',
+            'images/Projects/geeked2.png',
+            'images/Projects/geeked3.png',
+            'images/Projects/geeked4.png',
+            'images/Projects/geeked5.jpg',
+            'images/Projects/geeked6.jpg'
+        ];
+
+        const wattmasterImages = [
+            'images/Projects/wattmaster1.png',
+            'images/Projects/wattmaster2.png',
+            'images/Projects/wattmaster3.png',
+            'images/Projects/wattmaster4.png',
+            'images/Projects/wattmaster5.png',
+            'images/Projects/wattmaster6.png'
+        ];
+
+        const churchImages = [
+            'images/Projects/church1.png',
+            'images/Projects/church2.png',
+            'images/Projects/church3.png'
+        ];
+
+        const companyImages = [
+            'images/Projects/company1.jpg',
+            'images/Projects/company2.jpg',
+            'images/Projects/company3.jpg',
+            'images/Projects/company4.jpg',
+            'images/Projects/company5.png',
+            'images/Projects/company6.jpg',
+            'images/Projects/company7.jpg',
+            'images/Projects/company8.jpg',
+            'images/Projects/company9.jpg',
+            'images/Projects/company10.png',
+            'images/Projects/company11.png',
+            'images/Projects/company12.png',
+            'images/Projects/company13.png',
+            'images/Projects/company14.png',
+            'images/Projects/company15.png',
+            'images/Projects/company16.png',
+            'images/Projects/company17.png',
+            'images/Projects/company18.jpg',
+            'images/Projects/company19.png',
+            'images/Projects/company20.png',
+            'images/Projects/company21.png'
+        ];
+
+        function openLightbox(project) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const currentImageSpan = document.getElementById('current-image');
+            const totalImagesSpan = document.getElementById('total-images');
+
+            if (project === 'geekplanners') {
+                currentImages = geekplannersImages;
+            } else if (project === 'drivenest') {
+                currentImages = drivenestImages;
+            } else if (project === 'efarm') {
+                currentImages = efarmImages;
+            } else if (project === 'ciphernest') {
+                currentImages = ciphernestImages;
+            } else if (project === 'geeked') {
+                currentImages = geekedImages;
+            } else if (project === 'wattmaster') {
+                currentImages = wattmasterImages;
+            } else if (project === 'church') {
+                currentImages = churchImages;
+            } else if (project === 'company') {
+                currentImages = companyImages;
+            }
+
+            if (currentImages.length > 0) {
+                currentImageIndex = 0;
+                lightboxImage.src = currentImages[0];
+                currentImageSpan.textContent = '1';
+                totalImagesSpan.textContent = currentImages.length.toString();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeSlide(direction) {
+            currentImageIndex += direction;
+
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentImages.length - 1;
+            } else if (currentImageIndex >= currentImages.length) {
+                currentImageIndex = 0;
+            }
+
+            const lightboxImage = document.getElementById('lightbox-image');
+            const currentImageSpan = document.getElementById('current-image');
+            
+            lightboxImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                lightboxImage.src = currentImages[currentImageIndex];
+                currentImageSpan.textContent = (currentImageIndex + 1).toString();
+                lightboxImage.style.opacity = '1';
+            }, 200);
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
+
