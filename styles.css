@@ -167,17 +167,28 @@ img {
 
 .preloader-content {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
 }
 
 .logo-loader {
     margin-bottom: 2rem;
     animation: pulse 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .logo-loader-img {
     max-width: 200px;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
 
 .loader-bar {
@@ -187,6 +198,7 @@ img {
     border-radius: 2px;
     overflow: hidden;
     position: relative;
+    margin: 0 auto;
 }
 
 .loader-progress {
@@ -242,17 +254,24 @@ img {
 .logo a {
     display: inline-block;
     text-decoration: none;
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition-normal);
+    cursor: pointer;
 }
 
 .logo-img {
-    height: 40px;
+    height: 55px;
     width: auto;
     display: block;
-    transition: transform var(--transition-fast);
+    transition: transform var(--transition-normal), opacity var(--transition-normal), filter var(--transition-normal);
 }
 
 .logo a:hover .logo-img {
+    transform: scale(1.1);
+    opacity: 0.9;
+    filter: brightness(1.1);
+}
+
+.logo a:active .logo-img {
     transform: scale(1.05);
 }
 
@@ -1721,10 +1740,28 @@ body:not([data-theme="dark"]) .portfolio-tools span:hover {
     margin-bottom: 1rem;
 }
 
+.footer-logo-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform var(--transition-normal);
+    cursor: pointer;
+}
+
 .footer-logo-img {
     max-width: 120px;
     height: auto;
     display: block;
+    transition: transform var(--transition-normal), opacity var(--transition-normal), filter var(--transition-normal);
+}
+
+.footer-logo-link:hover .footer-logo-img {
+    transform: scale(1.1);
+    opacity: 0.9;
+    filter: brightness(1.1);
+}
+
+.footer-logo-link:active .footer-logo-img {
+    transform: scale(1.05);
 }
 
 .footer-section p {
@@ -1850,11 +1887,21 @@ body:not([data-theme="dark"]) .portfolio-tools span:hover {
     }
     
     .logo-img {
-        height: 35px;
+        height: 48px;
     }
     
     .logo-loader-img {
         max-width: 150px;
+        margin: 0 auto;
+    }
+    
+    .loader-bar {
+        width: 180px;
+        margin: 0 auto;
+    }
+    
+    .preloader-content {
+        padding: 0 1rem;
     }
     
     .footer-logo-img {
@@ -2173,11 +2220,21 @@ body:not([data-theme="dark"]) .portfolio-tools span:hover {
     }
     
     .logo-img {
-        height: 30px;
+        height: 42px;
     }
     
     .logo-loader-img {
         max-width: 120px;
+        margin: 0 auto;
+    }
+    
+    .loader-bar {
+        width: 160px;
+        margin: 0 auto;
+    }
+    
+    .preloader-content {
+        padding: 0 1rem;
     }
     
     .footer-logo-img {

@@ -9,13 +9,42 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
+// PERFORMANCE UTILITIES
+// ============================================
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ============================================
 // CUSTOM CURSOR
 // ============================================
 const cursor = document.getElementById('cursor');
 const cursorDot = document.getElementById('cursorDot');
 
-if (window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mousemove', (e) => {
+if (window.matchMedia('(pointer: fine)').matches && cursor && cursorDot) {
+    // Throttle mousemove for better performance
+    const updateCursor = throttle((e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
         cursor.classList.add('active');
@@ -23,7 +52,9 @@ if (window.matchMedia('(pointer: fine)').matches) {
         cursorDot.style.left = e.clientX + 'px';
         cursorDot.style.top = e.clientY + 'px';
         cursorDot.classList.add('active');
-    });
+    }, 16); // ~60fps
+    
+    document.addEventListener('mousemove', updateCursor);
 
     // Cursor interactions
     const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, .portfolio-item');
@@ -49,14 +80,7 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+// Navbar scroll effect - already handled by handleNavScroll above
 
 // Mobile menu toggle
 hamburger.addEventListener('click', () => {
@@ -75,7 +99,8 @@ navLinks.forEach(link => {
 // Active navigation link on scroll
 const sections = document.querySelectorAll('section[id]');
 
-function activateNavLink() {
+// Throttle navigation link activation
+const activateNavLink = throttle(() => {
     const scrollY = window.pageYOffset;
     
     sections.forEach(section => {
@@ -93,9 +118,9 @@ function activateNavLink() {
             });
         }
     });
-}
+}, 100);
 
-window.addEventListener('scroll', activateNavLink);
+window.addEventListener('scroll', activateNavLink, { passive: true });
 
 // Smooth scroll for navigation links
 navLinks.forEach(link => {
@@ -283,10 +308,14 @@ ctaButtons.forEach(button => {
 // ============================================
 // PARALLAX EFFECT FOR HERO SECTION (OPTIONAL)
 // ============================================
-window.addEventListener('scroll', () => {
+// Cache DOM elements
+const hero = document.querySelector('.hero');
+const floatingElementsContainer = document.querySelector('.floating-elements');
+const heroContent = hero ? hero.querySelector('.hero-content') : null;
+
+// Throttle parallax scroll for better performance
+const handleParallaxScroll = throttle(() => {
     const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    const floatingElementsContainer = document.querySelector('.floating-elements');
     
     // Hide floating elements when scrolling past hero section
     if (floatingElementsContainer) {
@@ -301,14 +330,13 @@ window.addEventListener('scroll', () => {
         }
     }
     
-    if (hero) {
-        const heroContent = hero.querySelector('.hero-content');
-        if (heroContent && scrolled < window.innerHeight) {
-            heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-            heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
-        }
+    if (hero && heroContent && scrolled < window.innerHeight) {
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
     }
-});
+}, 16); // ~60fps for smooth parallax
+
+window.addEventListener('scroll', handleParallaxScroll, { passive: true });
 
 // ============================================
 // FLOATING ELEMENTS ANIMATION
@@ -440,8 +468,16 @@ function initFloatingElements() {
             speedUp();
         });
         
-        // Start animation - smooth 60fps movement
-        setInterval(moveRandomly, 16); // ~60fps for smooth movement
+        // Use requestAnimationFrame for better performance
+        let animationId;
+        function animate() {
+            moveRandomly();
+            animationId = requestAnimationFrame(animate);
+        }
+        animate();
+        
+        // Store animation ID for potential cleanup
+        elementData.animationId = animationId;
     });
 }
 
@@ -450,21 +486,30 @@ window.addEventListener('load', () => {
     setTimeout(initFloatingElements, 500); // Wait for page to fully load
 });
 
-// Reinitialize on resize
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        const floatingElements = document.querySelectorAll('.floating-element');
-        floatingElements.forEach(element => {
-            // Keep elements within viewport on resize
-            const currentX = parseFloat(element.style.left) || 0;
-            const currentY = parseFloat(element.style.top) || 0;
-            const x = Math.min(currentX, window.innerWidth - 60);
-            const y = Math.min(currentY, window.innerHeight - 60);
-            element.style.left = Math.max(0, x) + 'px';
-            element.style.top = Math.max(0, y) + 'px';
-        });
-    }, 250);
-});
+// Reinitialize on resize - debounced for performance
+const handleResize = debounce(() => {
+    const floatingElements = document.querySelectorAll('.floating-element');
+    floatingElements.forEach(element => {
+        // Keep elements within viewport on resize
+        const currentX = parseFloat(element.style.left) || 0;
+        const currentY = parseFloat(element.style.top) || 0;
+        const x = Math.min(currentX, window.innerWidth - 60);
+        const y = Math.min(currentY, window.innerHeight - 60);
+        element.style.left = Math.max(0, x) + 'px';
+        element.style.top = Math.max(0, y) + 'px';
+    });
+}, 250);
+
+window.addEventListener('resize', handleResize, { passive: true });
+
+// ============================================
+// SCROLL TO TOP FUNCTION
+// ============================================
+function scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 
