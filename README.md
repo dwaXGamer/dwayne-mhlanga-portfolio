@@ -1,4 +1,4 @@
-# Dwayne Mhlanga — Cybersecurity Portfolio
+# Dwayne Mhlanga - Cybersecurity Portfolio
 
 A clean, multi-page static portfolio site split into separate files.
 
