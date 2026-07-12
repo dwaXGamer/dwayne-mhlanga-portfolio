@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — dwayne@ubuntu:~$</title>
+<meta name="description" content="Notes on cybersecurity, building, and the craft — by Dwayne Mhlanga (dwaX).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:ital,wght@0,400;0,700;0,900;1,400&family=Instrument+Serif:ital@0;1&family=Unbounded:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+
+/* ═══════════════════════════════════════════
+   BLOG PAGE — scoped styles
+   ═══════════════════════════════════════════ */
+
+/* ── Page shell ── */
+.blog-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Sticky top bar (below main nav) ── */
+.blog-topbar {
+  position: sticky;
+  top: 57px;
+  z-index: 90;
+  background: rgba(8,8,8,0.55);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.blog-topbar-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Each post tab in the top bar */
+.blog-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 0.5px solid transparent;
+  background: transparent;
+  transition: background 0.2s, border-color 0.2s;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+.blog-tab:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+}
+.blog-tab.active {
+  background: rgba(56,182,255,0.07);
+  border-color: rgba(56,182,255,0.25);
+  box-shadow: 0 0 0 0.5px rgba(56,182,255,0.1) inset;
+}
+
+.blog-tab-num {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: rgba(56,182,255,0.35);
+  flex-shrink: 0;
+}
+
+.blog-tab-cat {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--green);
+  background: rgba(56,182,255,0.1);
+  border: 0.5px solid rgba(56,182,255,0.28);
+  border-radius: 999px;
+  padding: 0.18rem 0.6rem;
+  flex-shrink: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blog-tab-title {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+.blog-tab.active .blog-tab-title,
+.blog-tab:hover .blog-tab-title { color: var(--text); }
+
+.blog-tab-time {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.18);
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-left: 0.5rem;
+}
+
+/* ── Back link row ── */
+.blog-back-row {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem 2.5rem 0;
+}
+.blog-back-link {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+.blog-back-link:hover { color: var(--green); }
+
+/* ── Article wrapper — only one visible at a time ── */
+.post-article {
+  display: none;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem 5rem;
+  flex: 1;
+  animation: postFadeIn 0.3s ease forwards;
+}
+.post-article.active { display: block; }
+
+@keyframes postFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Post meta ── */
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.post-cat {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(56,182,255,0.08);
+  border: 0.5px solid rgba(56,182,255,0.22);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+}
+
+.post-date {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+/* Published datetime line */
+.post-published {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.02em;
+}
+.post-published .pp-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+.post-published .pp-sep { color: rgba(255,255,255,0.2); }
+
+/* Post header image */
+.post-hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 0.5px solid var(--border);
+  margin-bottom: 2.25rem;
+  display: block;
+}
+
+/* Inline figure inside article body */
+.post-figure {
+  margin: 2.25rem 0;
+}
+.post-figure img,
+.post-figure svg {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 0.5px solid var(--border);
+  display: block;
+}
+.post-figure figcaption {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--muted);
+  margin-top: 0.65rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* ── Post title ── */
+.post-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 2rem;
+}
+.post-title em {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ── Post body ── */
+.post-body p {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 2;
+  margin-bottom: 1.35rem;
+  font-family: var(--sans);
+}
+.post-body p:last-child { margin-bottom: 0; }
+
+.post-body h4 {
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  color: var(--green);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 2.25rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.post-body h4::after {
+  content: '';
+  flex: 1;
+  max-width: 40px;
+  height: 0.5px;
+  background: rgba(56,182,255,0.25);
+}
+
+.post-body code {
+  font-family: var(--mono);
+  font-size: 0.83em;
+  background: rgba(56,182,255,0.07);
+  border: 0.5px solid rgba(56,182,255,0.18);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  color: var(--green);
+}
+
+.post-divider {
+  height: 0.5px;
+  background: linear-gradient(to right, transparent, rgba(56,182,255,0.2), transparent);
+  margin: 2rem 0;
+}
+
+/* ── Post bottom nav ── */
+.post-footnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  gap: 1rem;
+}
+.post-footnav button {
+  background: none;
+  border: 0.5px solid rgba(56,182,255,0.2);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: color 0.2s, border-color 0.2s;
+}
+.post-footnav button:hover { color: var(--green); border-color: rgba(56,182,255,0.5); }
+.post-footnav button:disabled { opacity: 0.25; cursor: default; }
+.post-footnav button:disabled:hover { color: var(--muted); border-color: rgba(56,182,255,0.2); }
+
+.post-footnav .fn-center {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* ── Footer ── */
+.blog-footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem 2.5rem;
+  background: var(--bg2);
+}
+.blog-footer .footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 980px) {
+  .blog-topbar { top: 54px; }
+  .blog-tab-title { display: none; }
+  .blog-tab { gap: 0.5rem; justify-content: center; }
+  .blog-tab-time { display: none; }
+  .blog-back-row { padding: 2rem 1.5rem 0; }
+  .post-article { padding: 3rem 1.5rem 4rem; }
+}
+@media (max-width: 640px) {
+  .blog-topbar-inner { padding: 0 0.5rem; }
+  .blog-tab { padding: 0.75rem 0.5rem; }
+  .blog-tab-num { display: none; }
+  .blog-back-row { padding: 1.5rem 1.1rem 0; }
+  .post-article { padding: 2.5rem 1.1rem 3.5rem; }
+  .post-title { font-size: clamp(1.3rem, 7vw, 2.4rem); }
+  .post-body p { font-size: 0.92rem; }
+  .post-footnav { flex-direction: column; align-items: stretch; text-align: center; }
+  .post-footnav .fn-center { order: -1; }
+}
+
+</style>
+</head>
+<body class="blog-shell">
+
+<!-- MAIN NAV -->
+<nav id="nav">
+  <a class="nav-brand" href="index.html"><img src="images/logo.png" alt="dwaX logo" class="nav-logo" onerror="this.style.display='none'"><span class="nav-brand-text">dwayne<span class="nb-muted">@ubuntu</span>:~$</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#terminal-section">terminal</a></li>
+    <li><a href="index.html#projects">projects</a></li>
+    <li><a href="index.html#certifications">certs</a></li>
+    <li><a href="index.html#stack">stack</a></li>
+    <li><a href="blog.html">blog</a></li>
+    <li><a href="index.html#about">about</a></li>
+    <li><a href="index.html#contact">contact</a></li>
+  </ul>
+  <a href="index.html" class="btn-primary nav-blog-btn" style="font-size:0.72rem;padding:0.5rem 1.1rem;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;">← portfolio</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="index.html#terminal-section">terminal</a>
+  <a href="index.html#projects">projects</a>
+  <a href="index.html#certifications">certs</a>
+  <a href="index.html#stack">stack</a>
+  <a href="blog.html">blog</a>
+  <a href="index.html#about">about</a>
+  <a href="index.html#contact">contact</a>
+</div>
+
+<!-- STICKY POST SWITCHER TAB BAR -->
+<div class="blog-topbar" role="tablist" aria-label="Blog posts">
+
+  <div class="blog-topbar-inner">
+
+    <button class="blog-tab active" data-post="1" role="tab" aria-selected="true" aria-controls="post-1">
+      <span class="blog-tab-num">01</span>
+      <span class="blog-tab-cat">career</span>
+      <span class="blog-tab-title">Why I chose Cybersecurity</span>
+      <span class="blog-tab-time">5 min</span>
+    </button>
+
+    <button class="blog-tab" data-post="2" role="tab" aria-selected="false" aria-controls="post-2">
+      <span class="blog-tab-num">02</span>
+      <span class="blog-tab-cat">project</span>
+      <span class="blog-tab-title">Building my first SIEM</span>
+      <span class="blog-tab-time">7 min</span>
+    </button>
+
+    <button class="blog-tab" data-post="3" role="tab" aria-selected="false" aria-controls="post-3">
+      <span class="blog-tab-num">03</span>
+      <span class="blog-tab-cat">cloud</span>
+      <span class="blog-tab-title">What is Cloud Security?</span>
+      <span class="blog-tab-time">6 min</span>
+    </button>
+
+  </div>
+</div>
+
+<!-- BACK LINK -->
+<div class="blog-back-row">
+  <a href="index.html#blog" class="blog-back-link">← back to portfolio</a>
+</div>
+
+<!-- ═══════════════════ POST 1 ═══════════════════ -->
+<article class="post-article active" id="post-1" role="tabpanel">
+  <div class="post-meta">
+    <span class="post-cat">// career</span>
+    <span class="post-date">5 min read</span>
+  </div>
+  <div class="post-published">
+    <span class="pp-dot"></span>
+    <span>Published 12 June 2026</span>
+    <span class="pp-sep">|</span>
+    <span>09:20hrs</span>
+  </div>
+  <h2 class="post-title">Why I chose Cybersecurity — <em>my move from IT Support</em></h2>
+  <img class="post-hero-img" src="images/blog/post1-career.svg" alt="From IT support to security">
+  <div class="post-body">
+    <p>I didn't start out in security. I started in IT support. And honestly, I think that was the best possible place to begin.</p>
+    <p>If you've never worked a support job, here's what it's like: your whole day is spent inside things that are broken. A laptop won't connect to the network. Someone can't log in. A printer has decided, for no reason anyone can explain, to stop working. You fix one thing, and two more come in.</p>
+    <div class="post-divider"></div>
+    <h4>What support actually taught me</h4>
+    <p>After a while, I noticed something. To fix a problem, I had to understand how the whole system fit together — who had access to what, why a service was running, where the traffic was going. Those are the exact same questions a hacker asks before they attack something. I just didn't know that yet.</p>
+    <p>But the thing that really changed my direction wasn't a course or a certificate. It was noticing how many things were quietly unsafe. The same admin password used on everything. Folders that anyone in the company could open. Updates that nobody installed because someone was scared it might break something. To everyone else these were just normal IT annoyances. To me they started to look like open doors.</p>
+    <h4>The day it clicked</h4>
+    <p>One afternoon I was trying to figure out why the network was slow, so I ran a quick scan to see what was connected. And there it was — a device I didn't recognise. Someone had plugged in their own personal router. It had been sitting there for about six months and nobody had noticed.</p>
+    <p>Nothing bad had happened. But the fact that it <em>could</em> have, and that no one would have known, really stuck with me. I couldn't stop thinking about it.</p>
+    <p>That's when I started reading properly about security. Not "how do I fix this" but "how could someone use this to cause harm?" They sound like similar questions. They're not. They take you to completely different places.</p>
+    <h4>Why my background actually helps</h4>
+    <p>A lot of people come into security from coding, or from university, or from networking. I came from support, and I think it gave me something useful: I'm not scared of messy, real-world systems. I've spent time in them. I've fixed things at 2am while someone stood over my shoulder, stressed.</p>
+    <p>Real systems are never neat. Nothing is documented. The logs are all over the place. Nobody has looked at the firewall rules in years. And that's exactly the kind of environment defenders actually work in. Support got me comfortable there.</p>
+    <div class="post-divider"></div>
+    <p>Looking back, I think cybersecurity chose me as much as I chose it. Once you start seeing these weak spots hiding in everyday systems, you can't unsee them. And at some point you have to decide what you're going to do about it. I decided to go all in.</p>
+  </div>
+  <div class="post-footnav">
+    <button disabled>← previous</button>
+    <span class="fn-center">01 / 03</span>
+    <button data-go="2">next →</button>
+  </div>
+</article>
+
+<!-- ═══════════════════ POST 2 ═══════════════════ -->
+<article class="post-article" id="post-2" role="tabpanel">
+  <div class="post-meta">
+    <span class="post-cat">// project</span>
+    <span class="post-date">7 min read</span>
+  </div>
+  <div class="post-published">
+    <span class="pp-dot"></span>
+    <span>Published 28 June 2026</span>
+    <span class="pp-sep">|</span>
+    <span>10:41hrs</span>
+  </div>
+  <h2 class="post-title">Building my first SIEM — <em>what I learned</em></h2>
+  <img class="post-hero-img" src="images/blog/post2-siem.svg" alt="A SIEM dashboard showing events, alerts and sources">
+  <div class="post-body">
+    <p>Most people learn about a SIEM by reading about it or watching someone demo one. I decided to just build one myself. Not because I thought I could beat the big tools — I couldn't — but because I've found the fastest way to really understand something is to try to build it and watch where it falls apart.</p>
+    <p>A quick note in case the word is new to you: a SIEM (Security Information and Event Management tool) is basically the security team's central nervous system. It collects logs from everywhere in a network and watches them for signs of trouble.</p>
+    <div class="post-divider"></div>
+    <h4>What it actually does</h4>
+    <p>At its core a SIEM does two jobs. It gathers logs from everywhere, and it checks those logs against rules to raise an alert when something looks wrong. That sounds simple. It really isn't. Collecting the logs is a hard engineering problem. Writing good rules is a hard logic problem. And keeping the alerts useful instead of annoying is both, plus a lot of experience I didn't have yet.</p>
+    <p>The big tools like Splunk have whole teams working on just the first part. I found out very quickly why.</p>
+    <h4>Step one: getting the logs in</h4>
+    <p>I started by pulling logs from a few Linux machines into one place. The first real problem hit almost immediately: logs are messy. Every program writes its dates differently. Some use one format, some use another, and some seem to use a format invented purely to make your life difficult. Just getting all the timestamps to line up took longer than setting up the whole collection system.</p>
+    <p>I used Python to read the common log formats and save everything in one tidy structure — a time, where it came from, what type of event it was, and the raw message. Getting that structure right early on matters a lot, because everything else depends on it.</p>
+    <figure class="post-figure">
+      <img src="images/blog/post2-siem.svg" alt="Logs flowing into a central dashboard">
+      <figcaption>The rough idea: messy logs from everywhere, cleaned up and pulled into one place.</figcaption>
+    </figure>
+    <h4>Step two: writing the rules</h4>
+    <p>This is where it got interesting. My first rule was simple: "if there are more than 10 failed logins in a minute from the same place, raise an alert." Sounds sensible, right? In practice it went off constantly — because of scheduled jobs, monitoring tools, and one server that had a broken setting and kept retrying every 30 seconds.</p>
+    <p>That taught me the real lesson: a good alert needs context. Not just "this happened," but "this happened, it's unusual for this machine, and it happened alongside this other thing." Getting that right is genuinely hard. I have a lot more respect now for the people who write these rules for a living.</p>
+    <h4>What I took away</h4>
+    <p>Alert fatigue is real. Every false alarm makes you trust the system a little less, until you start ignoring it — which defeats the whole point. By the end I had a dashboard I could mostly trust, but only after a lot of tuning and throwing away rules that looked clever but didn't work.</p>
+    <p>The biggest thing I learned: the tool itself isn't the valuable part. The logs feeding it are. If your logs are incomplete, you have blind spots. If they have no context, you get noise. Getting good data in matters more than the fancy software.</p>
+    <div class="post-divider"></div>
+    <p>Would I tell someone to build their own SIEM to learn? Absolutely. Would I actually run mine to protect a real company? No — the proper tools already do this far better. But I understand those tools completely differently now, and that was worth every late night.</p>
+  </div>
+  <div class="post-footnav">
+    <button data-go="1">← previous</button>
+    <span class="fn-center">02 / 03</span>
+    <button data-go="3">next →</button>
+  </div>
+</article>
+
+<!-- ═══════════════════ POST 3 ═══════════════════ -->
+<article class="post-article" id="post-3" role="tabpanel">
+  <div class="post-meta">
+    <span class="post-cat">// cloud</span>
+    <span class="post-date">6 min read</span>
+  </div>
+  <div class="post-published">
+    <span class="pp-dot"></span>
+    <span>Published 07 July 2026</span>
+    <span class="pp-sep">|</span>
+    <span>14:50hrs</span>
+  </div>
+  <h2 class="post-title">What is Cloud Security? <em>And why it matters</em></h2>
+  <img class="post-hero-img" src="images/blog/post3-cloud.svg" alt="A padlock inside a cloud, connected to several devices">
+  <div class="post-body">
+    <p>For a long time, protecting a network meant building a wall around it. You put up a firewall, you guarded the entrance, and you kept everything important safely inside. As long as the wall held, you were mostly fine.</p>
+    <p>The cloud changes that picture completely. When your systems live in someone else's data centre and your team can launch new things with a few clicks, the old "wall around everything" idea stops working. So what protects you now?</p>
+    <div class="post-divider"></div>
+    <h4>Security is shared</h4>
+    <p>The first thing to understand about the cloud is that security is a shared job. The provider — Amazon, Microsoft, Google — looks after the physical side: the buildings, the machines, the core network. You look after everything you put on top: your data, your apps, your accounts, and your settings.</p>
+    <p>Here's the part that surprises people. Most cloud breaches don't happen because the provider got hacked. They happen because someone left a storage folder open to the whole internet, or posted a secret key in their code by accident, or gave an account far more access than it needed. The danger isn't usually an attacker breaking down the door — it's a small mistake leaving a window open.</p>
+    <h4>Your login is the new wall</h4>
+    <p>In the cloud, accounts and permissions are everything. An account with too much access is a serious weakness, because if someone steals it, they inherit all that power. This is why the idea of "Zero Trust" has become so important: don't automatically trust anyone or anything, even inside your own system. Check every time.</p>
+    <p>The practical version is simple to say and harder to do: give every account only the access it truly needs, nothing more. Don't use the all-powerful main account for daily work. And change your keys and passwords regularly.</p>
+    <h4>Your setup is now code</h4>
+    <p>One neat thing about the cloud is that you can describe your entire setup in writing — in code — and build it from that. The upside is you can review it and check it for mistakes before it goes live. The downside is that a mistake can spread everywhere the instant you hit deploy.</p>
+    <p>So I've started treating that setup code the same way I treat normal code: review it, scan it, test it. A setting that accidentally exposes your data to the public is just as serious as any other security bug.</p>
+    <h4>Why this matters here, now</h4>
+    <p>Zimbabwe and the wider region are moving to the cloud fast. Startups, banks, government services — a lot of it is shifting online. But the security habits haven't always kept up. So understanding cloud security isn't just good for my career. It's becoming something almost every organisation around me is going to need.</p>
+    <div class="post-divider"></div>
+    <p>Cloud security isn't harder than the old way — it's just different. The weak spots have moved, and the tools have changed. But the core idea is the same as it's always been: know your own system, keep your exposure small, and know what normal looks like so you can spot when something isn't.</p>
+  </div>
+  <div class="post-footnav">
+    <button data-go="2">← previous</button>
+    <span class="fn-center">03 / 03</span>
+    <button disabled>next →</button>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer class="blog-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">dwayne<span>@ubuntu:~$</span></div>
+    <div class="footer-links">
+      <a href="https://github.com/dwaXGamer" target="_blank">github</a>
+      <a href="https://www.linkedin.com/in/dwayne-mhlanga-27b34614a/" target="_blank">linkedin</a>
+      <a href="https://www.instagram.com/dwax_the_geek/" target="_blank">instagram</a>
+      <a href="mailto:dwaynemhlangaa10@gmail.com">email</a>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Dwayne Mhlanga · <span style="color:var(--green)">dwaX</span> — Harare, Zimbabwe</span>
+      <span>Built with purpose &nbsp;·&nbsp; Cybersecurity Portfolio</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// ── Blog post switcher ────────────────────────────────────────────
+(function () {
+  const TOTAL = 3;
+
+  function showPost(n) {
+    // Deactivate all
+    document.querySelectorAll('.post-article').forEach(a => a.classList.remove('active'));
+    document.querySelectorAll('.blog-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+
+    // Activate target
+    const article = document.getElementById('post-' + n);
+    const tab = document.querySelector('.blog-tab[data-post="' + n + '"]');
+    if (!article || !tab) return;
+
+    article.classList.add('active');
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+
+    // Scroll to top of content
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Update URL hash without triggering scroll
+    history.replaceState(null, '', '#post-' + n);
+  }
+
+  // Tab clicks
+  document.querySelectorAll('.blog-tab').forEach(tab => {
+    tab.addEventListener('click', () => showPost(parseInt(tab.dataset.post)));
+  });
+
+  // Prev / next buttons inside posts
+  document.querySelectorAll('.post-footnav button[data-go]').forEach(btn => {
+    btn.addEventListener('click', () => showPost(parseInt(btn.dataset.go)));
+  });
+
+  // Respect URL hash on load (e.g. blog.html#post-2)
+  const hash = window.location.hash;
+  const match = hash.match(/^#post-(\d+)$/);
+  if (match) {
+    const n = parseInt(match[1]);
+    if (n >= 1 && n <= TOTAL) showPost(n);
+  }
+})();
+</script>
+
+</body>
+</html>
